@@ -2,8 +2,8 @@ from pathlib import Path
 import json
 import joblib
 from typing import Tuple
-import push_model
-import utils
+from .push_model import PushModel
+from .utils import load_clear_data
 from datetime import datetime
 
 DEFAULT_THRESHOLD = 0.28
@@ -76,9 +76,9 @@ def handler_fit(event: dict, _) -> dict[str, any]:
     """
 
     model_parameters, prediction_threshold = extract_parameters(event)
-    model = push_model(model_parameters, prediction_threshold)
+    model = PushModel(model_parameters, prediction_threshold)
 
-    trainnig_data = utils.load_clear_data()
+    trainnig_data = load_clear_data()
     model.fit(trainnig_data)
     try:
         model_path = save_model(model)
