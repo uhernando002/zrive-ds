@@ -1,4 +1,3 @@
-import pandas as pd
 from pathlib import Path
 import json
 import joblib
@@ -61,7 +60,7 @@ def handler_fit(event: dict, _) -> dict[str, any]:
             }
             "model_threshold": value
         )
-        The model_threshold is optional, only model_parameters are mandatory..
+        The model_threshold is optional, only model_parameters is mandatory
 
         Example:
             (
