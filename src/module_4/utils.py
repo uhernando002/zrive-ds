@@ -9,6 +9,7 @@ def load_all_data() -> pd.DataFrame:
     )
 
     data = pd.read_csv(data_file)
+    return data
 
 
 def preprocess_data(df: pd.DataFrame, maxItems: int = 5) -> pd.DataFrame:

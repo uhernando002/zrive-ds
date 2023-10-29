@@ -3,11 +3,11 @@ import json
 import joblib
 import pandas as pd
 from typing import Tuple
-import push_model
+from push_model import PushModel
 import os
 
 
-def load_model(model_path: str) -> push_model:
+def load_model(model_path: str) -> PushModel:
     if not os.path.exists(model_path):
         raise FileNotFoundError(f"File {model_path} does not exist")
 

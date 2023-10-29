@@ -28,7 +28,7 @@ class PushModel:
 
     LABEL_COLUMN = "outcome"
 
-    def __init__(self, parametrisation: dict, threshold: int) -> None:
+    def __init__(self, parametrisation: dict, threshold: float) -> None:
         """Initializes the variable with the selected model: GradientBoostingTree
 
         Args:

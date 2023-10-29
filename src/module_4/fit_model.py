@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import joblib
 from typing import Tuple
+from typing import Dict
 from .push_model import PushModel
 from .utils import load_clear_data
 from datetime import datetime
@@ -9,10 +10,10 @@ from datetime import datetime
 DEFAULT_THRESHOLD = 0.28
 
 
-def extract_parameters(event: dict) -> Tuple[dict, float]:
+def extract_parameters(event: Dict) -> Tuple[dict, float]:
     model_parameters = event["model_parameters"]
     prediction_threshold = event.get("model_threshold", DEFAULT_THRESHOLD)
-    return (model_parameters, prediction_threshold)
+    return model_parameters, prediction_threshold
 
 
 def save_model(model) -> Path:
@@ -46,7 +47,7 @@ def create_model_file_name(model_name: str) -> str:
     return model_name
 
 
-def handler_fit(event: dict, _) -> dict[str, any]:
+def handler_fit(event: Dict, _) -> Dict[str, any]:
     """Fits the model with GradientBoostingTree
 
     Args:
